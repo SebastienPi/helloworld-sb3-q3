@@ -1,7 +1,9 @@
 # Goal
 Profide a simple project “Hello World” to compare classic Spring Boot 3 vs Quarkus (both JAR/native).
 
-Disclamer: all native tests were done on Windows with WSL2. It is known to be a bit low (IO) and add an overlay compare to a native GNU/Linux. Native build times are affected by this.
+Disclamer:
+* all native tests were done on Windows with WSL2 (it is known to be a bit low in IOcompare to a native GNU/Linux, native build times are affected by this);
+* the code tested is very simple (single controller with a single service withou any intelligence).
 
 # Prerequisite
 To execute this project, you can use your favorite IDE or `maven` command.
@@ -95,6 +97,47 @@ time parallel --jobs 20 curl http://localhost:8080/hello/S%C3%A9bastien{1} ::: $
 
 Complete test lasted 224.392s.
 
+# Summary
+## Build
+Competitor | Build time | Build size
+---|---|---
+Spring Boot JAR | 3.8s | 17.75Mio
+Quarkus JAR | 6.15s | 15.8Mio
+Spring Boot native | 414s | 67.6Mio
+Quarkus native | 270s | 43.3Mio
+
+Quarkus produces always the slimmest build (especially in native). Spring Boot is the quickest to generate a JAR.
+
+## Start
+Competitor | Start time | Memory fingerprint
+---|---|---
+Spring Boot JAR | 1.6s | 120Mio
+Quarkus JAR | 0.74s | 69Mio
+Spring Boot native | 1.28s | 95.3Mio
+Quarkus native | 0.45s | 50.4Mio
+
+Quarkus is always the winner (start is at least half and fingerprint around 60% compare to Spring Boot).
+
+## Bench
+Competitor | Duration
+---|---
+Spring Boot JAR | 560.978s
+Quarkus JAR | 379.553s
+Spring Boot native | 228.948s
+Quarkus native | 224.392s
+
+Both natives are quicker.
+
+## To summary…
+… the summary:
+* Quarkus is the best to start a new project;
+* native may be a bit overkill for continuous integration, it may be quicker to deliver a simple JAR in your development environment;
+* native is great when runtime prevailling and build time is not a mater.
+
+## Support
+Currently, you need to upgrade Quarkus each time a new version is bumped (almost one per month). It may be an issue on non-agile team. Quarkus will introduce a LTS starting from 3.2. More information to come…
+
+Spring Boot did not change is policy: one version every 6 months, 1 year of (free) support on it.
 
 # Installation example of GraalVM for GNU/Linux
 ```
