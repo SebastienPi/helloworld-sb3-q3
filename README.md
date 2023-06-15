@@ -134,6 +134,8 @@ Both natives are quicker.
 * native may be a bit overkill for continuous integration, it may be quicker to deliver a simple JAR in your development environments;
 * native is great when runtime prevailling and build time is not a matter.
 
+French presentation done in my workplace: « Comparaison Spring Boot 3 et Quarkus 3 FR.odp ».
+
 ## Support
 Currently, you need to upgrade Quarkus each time a new version is bumped (almost one per month). It may be an issue on non-agile team. Quarkus will introduce a LTS starting from 3.2. More information to come…
 
