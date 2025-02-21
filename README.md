@@ -175,7 +175,7 @@ Usage of a custom JRE seems a bit quicker rather than standard one.
 * Quarkus is the best to start a new project;
 * native may be a bit overkill for continuous integration, it may be quicker to deliver a simple JAR in your development environments;
 * native is great when runtime prevailling and build time is not a matter;
-* jlink is only great to reduce size of an image (around 64% in my small test, probably less on big project).
+* jlink is only great to reduce size of an image (around 64% in my small test, probably less on big project), but if you use the same base image on many project (our case), you will loose factorisation and have bigger layers for apps.
 
 French presentation done in my workplace: « Comparaison Spring Boot 3 et Quarkus 3 FR.odp ».
 
